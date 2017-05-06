@@ -2,7 +2,7 @@ const http = require("http");
 const https = require("https");
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
-const searchString = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBtDNToTCKsFbbPcMvsrr6gX1MBt7EwDgM&cx=018299951593733330568:mspnhvrmcc8&searchType=image&q=";
+require("dotenv").config();
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/queries", function(err) {
@@ -38,7 +38,7 @@ const searchRoute = (req, res) => {
 			term: url.replace(/\%20/g, " ")
 		})
 		query.save();
-		https.get(searchString + url, (response) => {
+		https.get(process.env.SEARCH_STRING + url, (response) => {
 			let body = "";
 			response.on("data", (chunk) => {
 				body += chunk;
