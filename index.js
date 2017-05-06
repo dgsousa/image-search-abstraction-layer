@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const searchString = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBtDNToTCKsFbbPcMvsrr6gX1MBt7EwDgM&cx=018299951593733330568:mspnhvrmcc8&searchType=image&q=";
 
 
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost:27017/queries", function(err) {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/queries", function(err) {
 	console.log("Successfully connected to the database");
 })
 
